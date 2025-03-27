@@ -31,16 +31,16 @@ const education = [
 const experience = [
   {
     id: 1,
-    position: "Full Stack Developer",
+    position: "Trainee Programmer",
     company: "YASH Technologies",
     location: "Indore, India",
-    period: "2024 - Present",
+    period: "August 2024 - Present",
     description:
       "Developed and maintained multiple web applications. Collaborated with cross-functional teams to deliver high-quality software solutions.",
   },
   {
     id: 2,
-    position: "Web Developer Intern",
+    position: "Intern",
     company: "YASH Technologies",
     location: "Indore, India",
     period: "May 2024 - July 2024",
