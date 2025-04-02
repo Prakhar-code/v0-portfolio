@@ -15,7 +15,7 @@ const projects = [
     title: "TestGenie",
     description:
       "A VS Code Extension that uses AI to generate comprehensive test cases from OpenAPI/Swagger specifications and provides intelligent suggestions to optimize and enhance API contracts. Features include automated test case generation, contract validation, and recommendations for improving API design patterns.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/testgenie.jpg?height=400&width=600",
     tags: ["JavaScript", "FastAPI","Gemini-API", "OpenAPI", "Swagger", "VS Code Extension"],
     github: "https://github.com/Prakhar-code/TestGenie",
   },
