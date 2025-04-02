@@ -17,7 +17,7 @@ export default function Hero() {
   }
 
   return (
-    <div className="container mx-auto px-4 min-h-[calc(100vh-4rem)] flex flex-col justify-center">
+    <div className="container mx-auto px-4 min-h-[calc(100vh-4rem)] flex flex-col justify-center hero-section">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -37,10 +37,10 @@ export default function Hero() {
           user-friendly applications with modern technologies.
         </p>
         <div className="flex flex-wrap gap-4">
-          <Button asChild size="lg">
+          <Button asChild size="lg" className="btn-primary">
             <Link href="#projects">View My Work</Link>
           </Button>
-          <Button asChild variant="outline" size="lg">
+          <Button asChild variant="outline" size="lg" className="hover-card">
             <Link href="#contact">Contact Me</Link>
           </Button>
         </div>
@@ -48,7 +48,7 @@ export default function Hero() {
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden md:block">
         <motion.div animate={{ y: [0, 10, 0] }} transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}>
           <Link href="#about">
-            <Button variant="ghost" size="icon" aria-label="Scroll down">
+            <Button variant="ghost" size="icon" aria-label="Scroll down" className="hover-card">
               <ArrowDown className="h-6 w-6" />
             </Button>
           </Link>

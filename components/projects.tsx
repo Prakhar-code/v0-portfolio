@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Github, ExternalLink } from "lucide-react"
+import { Github } from "lucide-react"
 import Image from "next/image"
 import { motion } from "framer-motion"
 
@@ -12,40 +12,42 @@ import { motion } from "framer-motion"
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
+    title: "TestGenie",
     description:
-      "A full-stack e-commerce platform with user authentication, product management, and payment integration.",
+      "A VS Code Extension that uses AI to generate comprehensive test cases from OpenAPI/Swagger specifications and provides intelligent suggestions to optimize and enhance API contracts. Features include automated test case generation, contract validation, and recommendations for improving API design patterns.",
     image: "/placeholder.svg?height=400&width=600",
-    tags: ["React", "Node.js", "MongoDB", "Express"],
-    github: "https://github.com/yourusername/project1",
-    demo: "https://project1-demo.com",
+    tags: ["JavaScript", "FastAPI","Gemini-API", "OpenAPI", "Swagger", "VS Code Extension"],
+    github: "https://github.com/Prakhar-code/TestGenie",
   },
   {
     id: 2,
-    title: "Task Management App",
-    description: "A responsive task management application with drag-and-drop functionality and real-time updates.",
+    title: "v-Book",
+    description: "A comprehensive cabin booking system designed for corporate environments, enabling employees to efficiently reserve workspace cabins for various purposes. Features include real-time availability tracking, booking management, and an intuitive interface for seamless reservation experiences within the workplace.",
     image: "/placeholder.svg?height=400&width=600",
-    tags: ["React", "Firebase", "TailwindCSS"],
-    github: "https://github.com/yourusername/project2",
-    demo: "https://project2-demo.com",
+    tags: ["React", "FastAPI", "AWS RDS", "JWT-Authentication", "Real-time Updates"],
+    github: "https://github.com/Prakhar-code/v-Book",
   },
   {
     id: 3,
-    title: "Weather Dashboard",
-    description: "A weather dashboard that displays current and forecasted weather data for any location.",
+    title: "Real-Time Stock Market Data Pipeline",
+    description: "An end-to-end real-time data pipeline that collects Indian stock market data using IoT devices, processes it through Kafka streams, and displays it on a live dashboard. Features include IoT device simulation in Python, serverless data processing with AWS Lambda, real-time WebSocket updates, and persistent storage in DynamoDB.",
     image: "/placeholder.svg?height=400&width=600",
-    tags: ["JavaScript", "API Integration", "CSS3"],
-    github: "https://github.com/yourusername/project3",
-    demo: "https://project3-demo.com",
+    tags: ["Python", "AWS IoT Core", "Kafka", "DynamoDB", "Lambda", "WebSocket", "API Gateway", "ECS"],
+    github: {
+      IoT: "https://github.com/Prakhar-code/IoT-Simulation",
+      kafka: "https://github.com/Prakhar-code/kafka-infrastructure"
+    },
   },
   {
     id: 4,
-    title: "Blog Platform",
-    description: "A full-featured blog platform with content management system and user authentication.",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["Next.js", "PostgreSQL", "TailwindCSS"],
-    github: "https://github.com/yourusername/project4",
-    demo: "https://project4-demo.com",
+    title: "WhatUp",
+    description: "A real-time chat application with features like instant messaging, file sharing, and user authentication. Users can create accounts, join chat rooms, share media files, and communicate in real-time. The application uses WebSocket for live updates, Cloudinary for media storage, and MongoDB for data persistence.",
+    image: "/whatup.png?height=400&width=600",
+    tags: ["Node.js", "React", "JavaScript", "MongoDB", "WebSocket", "Cloudinary", "JWT Authentication"],
+    github: {
+      frontend: "https://github.com/Prakhar-code/Chat-App-Frontend",
+      backend: "https://github.com/Prakhar-code/Chat-App-Backend",
+    },
   },
 ]
 
@@ -100,19 +102,45 @@ export default function Projects() {
                   ))}
                 </div>
               </CardContent>
-              <CardFooter className="flex justify-between">
-                <Button asChild variant="outline" size="sm">
-                  <a href={project.github} target="_blank" rel="noopener noreferrer">
-                    <Github className="mr-2 h-4 w-4" />
-                    Code
-                  </a>
-                </Button>
-                <Button asChild size="sm">
-                  <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    View Project
-                  </a>
-                </Button>
+              <CardFooter>
+                {project.id === 3 ? (
+                  <div className="flex gap-2 w-full">
+                    <Button asChild variant="outline" className="flex-1">
+                      <a href={typeof project.github === 'object' ? project.github.IoT : project.github} target="_blank" rel="noopener noreferrer">
+                        <Github className="mr-2 h-4 w-4" />
+                        IoT-App
+                      </a>
+                    </Button>
+                    <Button asChild variant="outline" className="flex-1">
+                      <a href={typeof project.github === 'object' ? project.github.kafka : project.github} target="_blank" rel="noopener noreferrer">
+                        <Github className="mr-2 h-4 w-4" />
+                        Kafka-Infra
+                      </a>
+                    </Button>
+                  </div>
+                ) : project.id === 4 ? (
+                  <div className="flex gap-2 w-full">
+                    <Button asChild variant="outline" className="flex-1">
+                      <a href={typeof project.github === 'object' ? project.github.frontend : project.github} target="_blank" rel="noopener noreferrer">
+                        <Github className="mr-2 h-4 w-4" />
+                        Frontend
+                      </a>
+                    </Button>
+                    <Button asChild variant="outline" className="flex-1">
+                      <a href={typeof project.github === 'object' ? project.github.backend : project.github} target="_blank" rel="noopener noreferrer">
+                        <Github className="mr-2 h-4 w-4" />
+                        Backend
+                      </a>
+                    </Button>
+                  </div>
+                ) : (
+                  <Button asChild variant="outline" className="w-full">
+                    <a href={typeof project.github === 'string' ? project.github : project.github.IoT} target="_blank" rel="noopener noreferrer">
+                      <Github className="mr-2 h-4 w-4" />
+                      View Code
+                    </a>
+                  </Button>
+                )}
               </CardFooter>
             </Card>
           </motion.div>

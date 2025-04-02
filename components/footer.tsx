@@ -60,7 +60,7 @@ export default function Footer() {
           </div>
 
           <div className="text-center text-foreground/60 text-sm">
-            <p>&copy; {new Date().getFullYear()} Your Name. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Prakhar Kabra. All rights reserved.</p>
             <p className="mt-1">Built with Next.js, React, and TailwindCSS</p>
           </div>
         </div>

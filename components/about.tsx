@@ -12,7 +12,7 @@ export default function About() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div className="flex justify-center">
           <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary">
-            <Image src="/placeholder.svg?height=320&width=320" alt="Profile" fill className="object-cover" priority />
+            <Image src="/profile_pic.png?height=320&width=320" alt="Profile" fill className="object-cover" priority />
           </div>
         </div>
 
