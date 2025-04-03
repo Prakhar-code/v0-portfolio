@@ -92,7 +92,7 @@ export default function Contact() {
   return (
     <div className="container mx-auto px-4">
       <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold mb-2">Contact Me</h2>
+        <h2 className="text-3xl font-bold mb-2">Let's Connect</h2>
         <div className="w-20 h-1 bg-primary mx-auto mb-4"></div>
         <p className="text-foreground/70 max-w-2xl mx-auto">
           Have a question or want to work together? Feel free to reach out!

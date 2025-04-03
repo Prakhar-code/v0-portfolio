@@ -1,6 +1,8 @@
 "use server"
 
 import { z } from "zod"
+import nodemailer from "nodemailer"
+import { PrismaClient } from "@prisma/client"
 
 // Form validation schema
 const formSchema = z.object({
@@ -27,6 +29,57 @@ export async function submitContactForm(formData: FormData) {
     // 1. Store the message in a database
     // 2. Send an email notification
     // 3. Return a success response
+    // Store message in database using Prisma
+    const prisma = new PrismaClient()
+    await prisma.contactMessage.create({
+      data: {
+        name: validatedData.name,
+        email: validatedData.email, 
+        subject: validatedData.subject,
+        message: validatedData.message,
+        createdAt: new Date()
+      }
+    })
+
+    // Send email notification using Nodemailer
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT),
+      secure: true,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASSWORD
+      }
+    })
+
+    // Send confirmation email to user
+    await transporter.sendMail({
+      from: process.env.SMTP_FROM_EMAIL,
+      to: validatedData.email,
+      subject: "Thank you for your message",
+      html: `
+        <h1>Thank you for contacting us!</h1>
+        <p>We have received your message and will get back to you soon.</p>
+        <p>Your message details:</p>
+        <ul>
+          <li>Subject: ${validatedData.subject}</li>
+          <li>Message: ${validatedData.message}</li>
+        </ul>
+      `
+    })
+
+    // Send notification email to admin
+    await transporter.sendMail({
+      from: process.env.SMTP_FROM_EMAIL,
+      to: process.env.ADMIN_EMAIL,
+      subject: "New Contact Form Submission",
+      html: `
+        <h1>New Contact Form Submission</h1>
+        <p>From: ${validatedData.name} (${validatedData.email})</p>
+        <p>Subject: ${validatedData.subject}</p>
+        <p>Message: ${validatedData.message}</p>
+      `
+    })
 
     // Simulate a delay for the server action
     await new Promise((resolve) => setTimeout(resolve, 1000))
