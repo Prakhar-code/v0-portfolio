@@ -1,10 +1,8 @@
 "use client"
 
-import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Download, FileText } from "lucide-react"
+import { Download, Eye } from "lucide-react"
 
 // Sample resume data
 const education = [
@@ -48,6 +46,7 @@ const experience = [
       "Assisted in the development of responsive websites. Gained hands-on experience with HTML, CSS, JavaScript, and PHP.",
   },
 ]
+
 const achievements = [
   {
     id: 1,
@@ -57,13 +56,9 @@ const achievements = [
     description:
       "Secured 2nd Runner Up in the API Hackathon Held by YASH Technologies in Indore",
   },
-  
 ]
 
 export default function Resume() {
-  const [activeTab, setActiveTab] = useState("experience")
-
-  // In a real application, this would be a link to your actual resume PDF
   const resumeUrl = "/Prakhar.Kabra_CV.pdf"
 
   return (
@@ -74,104 +69,100 @@ export default function Resume() {
         <p className="text-foreground/70 max-w-2xl mx-auto mb-6">
           My professional journey and qualifications. Download my full resume for more details.
         </p>
-        <Button asChild className="mb-8">
+        <Button asChild className="mb-8 mx-auto">
           <a href={resumeUrl} download="PrakharKabra_Resume.pdf">
             <Download className="mr-2 h-4 w-4" />
             Download Resume
           </a>
         </Button>
+        <Button asChild className="mb-8 mx-auto ml-4">
+          <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
+            <Eye className="mr-2 h-4 w-4" />
+            Preview Resume
+          </a>
+        </Button>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-1">
-          <Card className="h-full">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-center mb-6">
-                <FileText className="h-16 w-16 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold text-center mb-4">Resume Preview</h3>
-              <p className="text-foreground/70 text-center mb-6">
-                View my resume online or download it for offline reference.
-              </p>
-              <div className="aspect-[8.5/11] bg-muted rounded-md overflow-hidden">
-                <iframe
-                  src={resumeUrl}
-                  className="w-full h-full"
-                  title="Resume Preview"
-                />
-              </div>
-            </CardContent>
-          </Card>
+      <div className="space-y-12">
+        {/* Experience Section */}
+        <div>
+          <h3 className="text-2xl font-bold text-blue-600 mb-6 flex items-center">
+            <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
+            Experience
+          </h3>
+          <div className="space-y-6 pl-8 border-l-2 border-blue-200">
+            {experience.map((item) => (
+              <Card key={item.id} className="relative">
+                <div className="absolute -left-[9px] top-6 w-4 h-4 bg-blue-200 rounded-full"></div>
+                <CardContent className="p-6">
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                    <h4 className="text-xl font-semibold">{item.position}</h4>
+                    <span className="text-sm text-foreground/70 bg-muted px-3 py-1 rounded-full mt-1 md:mt-0">
+                      {item.period}
+                    </span>
+                  </div>
+                  <div className="text-foreground/80 mb-4">
+                    {item.company} | {item.location}
+                  </div>
+                  <p className="text-foreground/70">{item.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
 
-        <div className="lg:col-span-2">
-          <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="flex justify-center gap-24 mb-8 w-full bg-muted rounded-full ">
-              <TabsTrigger value="experience" className="text-lg font-bold">Experience</TabsTrigger>
-              <TabsTrigger value="education" className="text-lg font-bold">Education</TabsTrigger>
-              <TabsTrigger value="achievements" className="text-lg font-bold">Achievements</TabsTrigger>
-            </TabsList>
-            <TabsContent value="experience" className="mt-0">
-              <div className="space-y-6">
-                {experience.map((item) => (
-                  <Card key={item.id}>
-                    <CardContent className="p-6">
-                      <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
-                        <h3 className="text-xl font-semibold">{item.position}</h3>
-                        <span className="text-sm text-foreground/70 bg-muted px-3 py-1 rounded-full mt-1 md:mt-0">
-                          {item.period}
-                        </span>
-                      </div>
-                      <div className="text-foreground/80 mb-4">
-                        {item.company} | {item.location}
-                      </div>
-                      <p className="text-foreground/70">{item.description}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </TabsContent>
-            <TabsContent value="education" className="mt-0">
-              <div className="space-y-6">
-                {education.map((item) => (
-                  <Card key={item.id}>
-                    <CardContent className="p-6">
-                      <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
-                        <h3 className="text-xl font-semibold">{item.degree}</h3>
-                        <span className="text-sm text-foreground/70 bg-muted px-3 py-1 rounded-full mt-1 md:mt-0">
-                          {item.period}
-                        </span>
-                      </div>
-                      <div className="text-foreground/80 mb-4">
-                        {item.institution} | {item.location}
-                      </div>
-                      <p className="text-foreground/70">{item.description}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </TabsContent>
-            <TabsContent value="achievements" className="mt-0">
-              <div className="space-y-6">
-                {achievements.map((item) => (
-                  <Card key={item.id}>
-                    <CardContent className="p-6">
-                      <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
-                        <h3 className="text-xl font-semibold">{item.Event}</h3>
-                        <span className="text-sm text-foreground/70 bg-muted px-3 py-1 rounded-full mt-1 md:mt-0">
-                          {item.period}
-                        </span>
-                      </div>
-                      <div className="text-foreground/80 mb-4">
-                        {item.location}
-                      </div>
-                      <p className="text-foreground/70">{item.description}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </TabsContent>
-          </Tabs>
+        {/* Education Section */}
+        <div>
+          <h3 className="text-2xl font-bold text-blue-600 mb-6 flex items-center">
+            <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
+            Education
+          </h3>
+          <div className="space-y-6 pl-8 border-l-2 border-blue-200">
+            {education.map((item) => (
+              <Card key={item.id} className="relative">
+                <div className="absolute -left-[9px] top-6 w-4 h-4 bg-blue-200 rounded-full"></div>
+                <CardContent className="p-6">
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                    <h4 className="text-xl font-semibold">{item.degree}</h4>
+                    <span className="text-sm text-foreground/70 bg-muted px-3 py-1 rounded-full mt-1 md:mt-0">
+                      {item.period}
+                    </span>
+                  </div>
+                  <div className="text-foreground/80 mb-4">
+                    {item.institution} | {item.location}
+                  </div>
+                  <p className="text-foreground/70">{item.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Achievements Section */}
+        <div>
+          <h3 className="text-2xl font-bold text-blue-600 mb-6 flex items-center">
+            <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
+            Achievements
+          </h3>
+          <div className="space-y-6 pl-8 border-l-2 border-blue-200">
+            {achievements.map((item) => (
+              <Card key={item.id} className="relative">
+                <div className="absolute -left-[9px] top-6 w-4 h-4 bg-blue-200 rounded-full"></div>
+                <CardContent className="p-6">
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                    <h4 className="text-xl font-semibold">{item.Event}</h4>
+                    <span className="text-sm text-foreground/70 bg-muted px-3 py-1 rounded-full mt-1 md:mt-0">
+                      {item.period}
+                    </span>
+                  </div>
+                  <div className="text-foreground/80 mb-4">
+                    {item.location}
+                  </div>
+                  <p className="text-foreground/70">{item.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </div>
