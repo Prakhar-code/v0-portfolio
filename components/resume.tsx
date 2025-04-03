@@ -48,6 +48,17 @@ const experience = [
       "Assisted in the development of responsive websites. Gained hands-on experience with HTML, CSS, JavaScript, and PHP.",
   },
 ]
+const achievements = [
+  {
+    id: 1,
+    Event: "API Hackathon",
+    location: "Indore, India",
+    period: "February 2024",
+    description:
+      "Secured 2nd Runner Up in the API Hackathon Held by YASH Technologies in Indore",
+  },
+  
+]
 
 export default function Resume() {
   const [activeTab, setActiveTab] = useState("experience")
@@ -95,9 +106,10 @@ export default function Resume() {
 
         <div className="lg:col-span-2">
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="grid w-full grid-cols-2 mb-8">
-              <TabsTrigger value="experience">Experience</TabsTrigger>
-              <TabsTrigger value="education">Education</TabsTrigger>
+            <TabsList className="flex justify-center gap-24 mb-8 w-full bg-muted rounded-full ">
+              <TabsTrigger value="experience" className="text-lg font-bold">Experience</TabsTrigger>
+              <TabsTrigger value="education" className="text-lg font-bold">Education</TabsTrigger>
+              <TabsTrigger value="achievements" className="text-lg font-bold">Achievements</TabsTrigger>
             </TabsList>
             <TabsContent value="experience" className="mt-0">
               <div className="space-y-6">
@@ -132,6 +144,26 @@ export default function Resume() {
                       </div>
                       <div className="text-foreground/80 mb-4">
                         {item.institution} | {item.location}
+                      </div>
+                      <p className="text-foreground/70">{item.description}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+            <TabsContent value="achievements" className="mt-0">
+              <div className="space-y-6">
+                {achievements.map((item) => (
+                  <Card key={item.id}>
+                    <CardContent className="p-6">
+                      <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                        <h3 className="text-xl font-semibold">{item.Event}</h3>
+                        <span className="text-sm text-foreground/70 bg-muted px-3 py-1 rounded-full mt-1 md:mt-0">
+                          {item.period}
+                        </span>
+                      </div>
+                      <div className="text-foreground/80 mb-4">
+                        {item.location}
                       </div>
                       <p className="text-foreground/70">{item.description}</p>
                     </CardContent>
