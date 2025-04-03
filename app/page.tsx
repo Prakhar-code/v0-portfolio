@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <Navbar />
-      <section id="home" className="pt-16">
+      <section id="home" className="pt-4">
         <Hero />
       </section>
       <section id="about" className="py-16">
