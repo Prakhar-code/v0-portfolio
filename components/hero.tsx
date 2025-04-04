@@ -39,12 +39,12 @@ export default function Hero() {
   }
 
   return (
-    <div className="container mx-auto px-4 min-h-[calc(100vh-4rem)] flex flex-col md:flex-row items-center justify-between hero-section">
+    <div className="container mx-auto px-4 min-h-[calc(100vh-4rem)] flex flex-col md:flex-row items-center justify-center md:justify-between hero-section">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="max-w-3xl"
+        className="max-w-3xl text-center md:text-left"
       >
         <h1 className="text-4xl md:text-6xl font-bold mb-4">
           Hi, I'm <span className="text-primary">Prakhar Kabra</span>
