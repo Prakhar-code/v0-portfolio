@@ -12,7 +12,12 @@ const skills = [
   { name: "TypeScript", icon: <img src="/typescript-programming-language-icon.png" alt="TypeScript" className="h-8 w-8" /> },
   { name: "JavaScript", icon: <img src="/javascript-programming-language-icon.png" alt="JavaScript" className="h-8 w-8" /> },
   { name: "Node.js", icon: <img src="/node-js-icon.png" alt="Node.js" className="h-8 w-8" /> },
-  { name: "Express", icon: <img src="/express-js-icon.png" alt="Express" className="h-8 w-8" /> },
+  { name: "Express", icon: (
+    <>
+      <img src="/express-js-icon.png" alt="Express" className="h-8 w-8 block dark:hidden" />
+      <img src="/express-js-white-icon.png" alt="Express" className="h-8 w-8 hidden dark:block" />
+    </>
+  )},
   { name: "MongoDB", icon: <img src="/mongodb-icon.png" alt="MongoDB" className="h-8 w-8" /> },
   { name: "PostgreSQL", icon: <img src="/postgresql-icon.png" alt="PostgreSQL" className="h-8 w-8" /> },
   { name: "TailwindCSS", icon: <img src="/tailwind-css-icon.png" alt="TailwindCSS" className="h-8 w-8" /> },
