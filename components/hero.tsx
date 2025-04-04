@@ -2,13 +2,15 @@
 
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ArrowDown, Code2, Brain, Wrench } from "lucide-react"
+import { ArrowDown, Code2, Brain, Wrench, Code, Terminal, Cpu, Database, Server, Github, Cloud, Network, Coffee, Headphones, Camera, Wifi, Smartphone } from "lucide-react"
 import Link from "next/link"
 import { useTypewriter } from "@/hooks/useTypewriter"
+import { useState } from "react"
 
 export default function Hero() {
   const texts = ["Full Stack Developer...", "Software Engineer...", "Problem Solver..."]
   const typewriterText = useTypewriter(texts, 150)
+  const [animationType, setAnimationType] = useState<'circle' | 'grid'>('circle')
 
   const getIcon = (text: string) => {
     if (text.includes("Full Stack")) return <Code2 className="h-6 w-6 mr-2" />
@@ -16,8 +18,28 @@ export default function Hero() {
     return <Wrench className="h-6 w-6 mr-2" />
   }
 
+  const techIcons = [
+    { icon: <Code className="h-16 w-16" />, color: "text-blue-500" },
+    { icon: <Terminal className="h-16 w-16" />, color: "text-green-500" },
+    { icon: <Cpu className="h-16 w-16" />, color: "text-purple-500" },
+    { icon: <Database className="h-16 w-16" />, color: "text-red-500" },
+    { icon: <Server className="h-16 w-16" />, color: "text-yellow-500" },
+    { icon: <Github className="h-16 w-16" />, color: "text-gray-500" },
+    { icon: <Cloud className="h-16 w-16" />, color: "text-sky-500" },
+    { icon: <Network className="h-16 w-16" />, color: "text-indigo-500" },
+    { icon: <Coffee className="h-16 w-16" />, color: "text-amber-500" },
+    { icon: <Headphones className="h-16 w-16" />, color: "text-pink-500" },
+    { icon: <Camera className="h-16 w-16" />, color: "text-emerald-500" },
+    { icon: <Wifi className="h-16 w-16" />, color: "text-cyan-500" },
+    { icon: <Smartphone className="h-16 w-16" />, color: "text-violet-500" },
+  ]
+
+  const handleIconClick = () => {
+    setAnimationType(prev => prev === 'circle' ? 'grid' : 'circle')
+  }
+
   return (
-    <div className="container mx-auto px-4 min-h-[calc(100vh-4rem)] flex flex-col justify-center hero-section">
+    <div className="container mx-auto px-4 min-h-[calc(100vh-4rem)] flex flex-col md:flex-row items-center justify-between hero-section">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -45,6 +67,63 @@ export default function Hero() {
           </Button>
         </div>
       </motion.div>
+
+      {/* Animation Section */}
+      <div className="hidden md:block relative w-1/2 h-[500px]">
+        <div className="absolute inset-0 flex items-center justify-center rounded-3xl">
+          <motion.div
+            className={`absolute inset-0 flex items-center justify-center ${
+              animationType === 'grid' ? 'grid grid-cols-3 gap-12 p-12' : ''
+            }`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            {techIcons.map((item, index) => (
+              <motion.div
+                key={index}
+                className={`${item.color} dark:drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] cursor-pointer ${
+                  animationType === 'circle' ? 'absolute' : ''
+                }`}
+                initial={{ scale: 0, opacity: 0 }}
+                animate={
+                  animationType === 'circle'
+                    ? {
+                        scale: 1,
+                        opacity: 1,
+                        x: Math.sin(index * 1.2) * 220,
+                        y: Math.cos(index * 1.2) * 220,
+                      }
+                    : {
+                        scale: 1,
+                        opacity: 1,
+                        x: 0,
+                        y: 0,
+                      }
+                }
+                whileHover={{ 
+                  scale: 1.2, 
+                  rotate: animationType === 'grid' ? 360 : 0,
+                  transition: { duration: 0.5, ease: "easeInOut" }
+                }}
+                transition={{
+                  duration: 1,
+                  delay: index * 0.1,
+                  ease: "easeInOut",
+                  ...(animationType === 'circle' && {
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                  })
+                }}
+                onClick={handleIconClick}
+              >
+                {item.icon}
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden md:block">
         <motion.div animate={{ y: [0, 10, 0] }} transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}>
           <Link href="#about">
