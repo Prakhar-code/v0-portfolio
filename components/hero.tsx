@@ -10,7 +10,7 @@ import { useState } from "react"
 export default function Hero() {
   const texts = ["Full Stack Developer...", "Software Engineer...", "Problem Solver..."]
   const typewriterText = useTypewriter(texts, 150)
-  const [animationType, setAnimationType] = useState<'circle' | 'grid'>('circle')
+  const [animationType, setAnimationType] = useState<'circle' | 'grid'>('grid')
 
   const getIcon = (text: string) => {
     if (text.includes("Full Stack")) return <Code2 className="h-6 w-6 mr-2" />
