@@ -23,7 +23,7 @@ const projects = [
     id: 2,
     title: "v-Book",
     description: "A comprehensive cabin booking system designed for corporate environments, enabling employees to efficiently reserve workspace cabins for various purposes. Features include real-time availability tracking, booking management, and an intuitive interface for seamless reservation experiences within the workplace.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/v-book.png?height=400&width=600",
     tags: ["React", "FastAPI", "AWS RDS", "JWT-Authentication", "Real-time Updates"],
     github: "https://github.com/Prakhar-code/v-Book",
   },
@@ -31,7 +31,7 @@ const projects = [
     id: 3,
     title: "Real-Time Stock Market Data Pipeline",
     description: "An end-to-end real-time data pipeline that collects Indian stock market data using IoT devices, processes it through Kafka streams, and displays it on a live dashboard. Features include IoT device simulation in Python, serverless data processing with AWS Lambda, real-time WebSocket updates, and persistent storage in DynamoDB.",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/rtda.png?height=400&width=600",
     tags: ["Python", "AWS IoT Core", "Kafka", "DynamoDB", "Lambda", "WebSocket", "API Gateway", "ECS"],
     github: {
       IoT: "https://github.com/Prakhar-code/IoT-Simulation",

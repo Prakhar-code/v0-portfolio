@@ -58,6 +58,16 @@ const achievements = [
   },
 ]
 
+const certificates = [
+  {
+    id: 1,
+    Event: "AWS Certified Developer Associate",
+    Validity: "27 Feb 2025 - 27 Feb 2028",
+    description: "Successfully completed the AWS Certified Developer Associate Course",
+    verifyLink: "https://cp.certmetrics.com/amazon/en/public/verify/credential/39582dca2acd4a0db42cd0e5a3e511f1"
+  },
+]
+
 export default function Resume() {
   const resumeUrl = "/Prakhar.Kabra_CV.pdf"
 
@@ -137,7 +147,41 @@ export default function Resume() {
             ))}
           </div>
         </div>
-
+        
+         {/* Certificates Section */}
+         <div>
+          <h3 className="text-2xl font-bold text-blue-600 mb-6 flex items-center">
+            <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
+            Certificates
+          </h3>
+          <div className="space-y-6 pl-8 border-l-2 border-blue-200">
+            {certificates.map((item) => (
+              <Card key={item.id} className="relative">
+                <div className="absolute -left-[9px] top-6 w-4 h-4 bg-blue-200 rounded-full"></div>
+                <CardContent className="p-6">
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                    <h4 className="text-xl font-semibold">{item.Event}</h4>
+                    <span className="text-sm text-foreground/70 bg-muted px-3 py-1 rounded-full mt-1 md:mt-0">
+                      {item.Validity}
+                    </span>
+                  </div>
+                  <p className="text-foreground/70 mb-2">{item.description}</p>
+                  {item.verifyLink && (
+                    <a 
+                      href={item.verifyLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 inline-flex items-center gap-1 text-sm"
+                    >
+                      Verify Certificate →
+                    </a>
+                  )}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+        
         {/* Achievements Section */}
         <div>
           <h3 className="text-2xl font-bold text-blue-600 mb-6 flex items-center">
@@ -164,6 +208,8 @@ export default function Resume() {
             ))}
           </div>
         </div>
+        
+       
       </div>
     </div>
   )

@@ -24,6 +24,20 @@ const skills = [
   { name: "HTML5", icon: <img src="/html-icon.png" alt="HTML5" className="h-8 w-8" /> },
   { name: "CSS3", icon: <img src="/css-icon.png" alt="CSS3" className="h-8 w-8" /> },
   { name: "Git", icon: <img src="/git-icon.png" alt="Git" className="h-8 w-8" /> },
+  { name: "Docker", icon: <img src="/docker-icon.png" alt="Git" className="h-8 w-8" /> },
+  { name: "Jenkins", icon: <img src="/jenkins-icon.png" alt="Git" className="h-8 w-8" /> },
+  { name: "Kafka", icon: (
+    <>
+      <img src="/apache-kafka-icon-light.png" alt="Express" className="h-8 w-8 block dark:hidden" />
+      <img src="/apache-kafka-icon-dark.png" alt="Express" className="h-8 w-8 hidden dark:block" />
+    </>
+  )},
+  { name: "AWS", icon: ( 
+    <>
+      <img src="/aws-icon.png" alt="AWS" className="h-8 w-8 block dark:hidden" />
+      <img src="/aws-icon-dark.png" alt="AWS" className="h-8 w-8 hidden dark:block" />
+    </>
+  )},
 ]
 
 export default function Skills() {
