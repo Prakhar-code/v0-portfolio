@@ -49,6 +49,22 @@ const projects = [
       backend: "https://github.com/Prakhar-code/Chat-App-Backend",
     },
   },
+  {
+    id: 5,
+    title: "FinTrack",
+    description: "A financial tool that helps users track / compare credit card offers and choose the best one based on their credit score.",
+    image: "/placeholder.svg?height=400&width=600",
+    tags: ["Node.js", "React", "JavaScript", "MongoDB", "WebSocket", "Cloudinary", "JWT Authentication"],
+    github: "https://github.com/Prakhar-code/FinTrack",
+  },
+  {
+    id: 6,
+    title: "ShareIT",
+    description: "An end-to-end encrypted file sharing platform with zero-knowledge architecture. Features include client-side encryption using AES-256, secure key exchange via RSA, encrypted file chunking for large transfers, and ephemeral sharing links. The platform ensures complete privacy by encrypting files before upload and storing only encrypted data.",
+    image: "/placeholder.svg?height=400&width=600",
+    tags: ["Node.js", "React", "TypeScript", "Redis", "AWS S3", "Web Crypto API", "RSA", "AES-256", "End-to-End Encryption"],
+    github: "https://github.com/Prakhar-code/ShareIT",
+  },
 ]
 
 export default function Projects() {
@@ -133,6 +149,10 @@ export default function Projects() {
                       </a>
                     </Button>
                   </div>
+                ) : project.id === 5 || project.id === 6 ? (
+                  <Button variant="outline" className="w-full" disabled>
+                    Under Development
+                  </Button>
                 ) : (
                   <Button asChild variant="outline" className="w-full">
                     <a href={typeof project.github === 'string' ? project.github : project.github.IoT} target="_blank" rel="noopener noreferrer">
