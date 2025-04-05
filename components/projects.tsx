@@ -52,9 +52,9 @@ const projects = [
   {
     id: 5,
     title: "FinTrack",
-    description: "A financial tool that helps users track / compare credit card offers and choose the best one based on their credit score.",
+    description: "A comprehensive financial platform offering credit card comparison tools, financial calculators, and educational content. Features include personalized credit card recommendations based on credit scores, interactive loan calculators, investment return projectors, and a CMS-powered blog system for financial literacy content. The platform uses data analytics to provide tailored financial insights.",
     image: "/placeholder.svg?height=400&width=600",
-    tags: ["Node.js", "React", "JavaScript", "MongoDB", "WebSocket", "Cloudinary", "JWT Authentication"],
+    tags: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Redis", "TailwindCSS", "Strapi CMS", "Chart.js", "SEO Optimization", "Analytics"],
     github: "https://github.com/Prakhar-code/FinTrack",
   },
   {
