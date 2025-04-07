@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { useToast } from "@/hooks/use-toast"
 import { Mail, Phone, MapPin } from "lucide-react"
 import { z } from "zod"
+import { submitContactForm } from "@/app/actions"
 
 // Form validation schema
 const formSchema = z.object({
@@ -50,40 +51,54 @@ export default function Contact() {
 
     try {
       // Validate form data
-      const validatedData = formSchema.parse(formData)
-
+      // const validatedData = formSchema.parse(formData)
+      const formDataObj = new FormData()
+      formDataObj.append("name", formData.name)
+      formDataObj.append("email", formData.email)
+      formDataObj.append("subject", formData.subject)
+      formDataObj.append("message", formData.message)
       // In a real application, you would send this data to your server
       // For now, we'll simulate a successful submission
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
-      })
-
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      })
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        const newErrors: Record<string, string> = {}
-        error.errors.forEach((err) => {
-          if (err.path[0]) {
-            newErrors[err.path[0] as string] = err.message
-          }
-        })
-        setErrors(newErrors)
-      } else {
+      const result = await submitContactForm(formDataObj)
+      // const result = await new Promise((resolve) => setTimeout(resolve, 1000))
+      if (result.success) {
         toast({
-          title: "Error",
-          description: "Something went wrong. Please try again.",
-          variant: "destructive",
+          title: "Success!",
+          description: result.message || "Thank you for your message. I'll get back to you soon.",
         })
+        
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        })
+        setErrors({})
+      } else {
+        // Handle validation errors
+        if (result.errors) {
+          const formattedErrors: Record<string, string> = {};
+          for (const key in result.errors) {
+            if (Array.isArray(result.errors[key])) {
+              formattedErrors[key] = result.errors[key].join(', '); // Join array messages into a single string
+            }
+          }
+          setErrors(formattedErrors);
+        } else {
+          toast({
+            title: "Error",
+            description: result.message || "Something went wrong. Please try again.",
+            variant: "destructive",
+          })
+        }
       }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive",
+      })
     } finally {
       setIsSubmitting(false)
     }
@@ -109,7 +124,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="font-semibold">Email</h3>
-                  <p className="text-foreground/70">kabra.prakhar@gmail.com</p>
+                  <p className="text-foreground/70">kabra.prakhar09@gmail.com</p>
                 </div>
               </CardContent>
             </Card>

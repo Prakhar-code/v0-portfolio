@@ -35,7 +35,8 @@ const projects = [
     tags: ["Python", "AWS IoT Core", "Kafka", "DynamoDB", "Lambda", "WebSocket", "API Gateway", "ECS"],
     github: {
       IoT: "https://github.com/Prakhar-code/IoT-Simulation",
-      kafka: "https://github.com/Prakhar-code/kafka-infrastructure"
+      kafka: "https://github.com/Prakhar-code/kafka-infrastructure",
+      CDK: "https://github.com/Prakhar-code/cdk-infra"
     },
   },
   {
@@ -131,6 +132,12 @@ export default function Projects() {
                       <a href={typeof project.github === 'object' ? project.github.kafka : project.github} target="_blank" rel="noopener noreferrer">
                         <Github className="mr-2 h-4 w-4" />
                         Kafka-Infra
+                      </a>
+                    </Button>
+                    <Button asChild variant="outline" className="flex-1">
+                      <a href={typeof project.github === 'object' ? project.github.kafka : project.github} target="_blank" rel="noopener noreferrer">
+                        <Github className="mr-2 h-4 w-4" />
+                        CDK-Infra
                       </a>
                     </Button>
                   </div>
