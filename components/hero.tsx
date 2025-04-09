@@ -69,7 +69,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Animation Section */}
-      <div className="hidden md:block relative w-1/2 h-[500px]">
+      <div className="hidden md:block relative w-1/2 h-[600px] overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center rounded-3xl">
           <motion.div
             className={`absolute inset-0 flex items-center justify-center ${
@@ -91,8 +91,8 @@ export default function Hero() {
                     ? {
                         scale: 1,
                         opacity: 1,
-                        x: Math.sin(index * 1.2) * 220,
-                        y: Math.cos(index * 1.2) * 220,
+                        x: Math.sin(index * 1.2) * 200,
+                        y: Math.cos(index * 1.2) * 200,
                       }
                     : {
                         scale: 1,
