@@ -52,19 +52,19 @@ const projects = [
   },
   {
     id: 5,
-    title: "FinTrack",
+    title: "FinWise",
     description: "A comprehensive financial platform offering credit card comparison tools, financial calculators, and educational content. Features include personalized credit card recommendations based on credit scores, interactive loan calculators, investment return projectors, and a CMS-powered blog system for financial literacy content. The platform uses data analytics to provide tailored financial insights.",
     image: "/placeholder.svg?height=400&width=600",
     tags: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Redis", "TailwindCSS", "Strapi CMS", "Chart.js", "SEO Optimization", "Analytics"],
-    github: "https://github.com/Prakhar-code/FinTrack",
+    github: "https://github.com/Prakhar-code/FinWise",
   },
   {
     id: 6,
-    title: "ShareIT",
+    title: "SafeDrop",
     description: "An end-to-end encrypted file sharing platform with zero-knowledge architecture. Features include client-side encryption using AES-256, secure key exchange via RSA, encrypted file chunking for large transfers, and ephemeral sharing links. The platform ensures complete privacy by encrypting files before upload and storing only encrypted data.",
     image: "/placeholder.svg?height=400&width=600",
     tags: ["Node.js", "React", "TypeScript", "Redis", "AWS S3", "Web Crypto API", "RSA", "AES-256", "End-to-End Encryption"],
-    github: "https://github.com/Prakhar-code/ShareIT",
+    github: "https://github.com/Prakhar-code/SafeDrop",
   },
 ]
 
