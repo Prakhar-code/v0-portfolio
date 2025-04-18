@@ -135,7 +135,7 @@ export default function Projects() {
                       </a>
                     </Button>
                     <Button asChild variant="outline" className="flex-1">
-                      <a href={typeof project.github === 'object' ? project.github.kafka : project.github} target="_blank" rel="noopener noreferrer">
+                      <a href={typeof project.github === 'object' ? project.github.CDK : project.github} target="_blank" rel="noopener noreferrer">
                         <Github className="mr-2 h-4 w-4" />
                         CDK-Infra
                       </a>
